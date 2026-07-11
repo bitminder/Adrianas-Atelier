@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="artworks.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -56,16 +57,16 @@
           </div>
         </div>
 
-        <div class="hero-art" aria-label="Dekorative Vorschau eines farbenfrohen Gemäldes">
-          <div class="art-frame">
-            <div class="artwork artwork-hero">
-              <span class="sun"></span>
-              <span class="hill hill-one"></span>
-              <span class="hill hill-two"></span>
-              <span class="flower flower-one">✿</span>
-              <span class="flower flower-two">✿</span>
-              <span class="flower flower-three">✿</span>
-            </div>
+        <div class="hero-art">
+          <div class="art-frame real-art-frame">
+            <img
+              class="hero-artwork-photo"
+              src="assets/werke/IMG_20260612_190107.jpg"
+              alt="Adrianas abstraktes Gemälde mit roten, gelben, grünen und violetten Pinselstrichen"
+              width="1536"
+              height="1024"
+              fetchpriority="high"
+            />
           </div>
           <div class="floating-label">Original von Adriana ✦</div>
         </div>
@@ -84,45 +85,57 @@
 
         <div class="gallery-grid">
           <article class="art-card">
-            <div class="artwork artwork-one" role="img" aria-label="Abstraktes Bild in Rosa, Blau und Gelb">
-              <span></span><span></span><span></span>
-            </div>
+            <img
+              class="artwork-photo"
+              src="assets/werke/IMG_20260612_190052.jpg"
+              alt="Abstraktes Gemälde von Adriana mit schwarzen, orangefarbenen, grünen und violetten Pinselstrichen"
+              width="1536"
+              height="1024"
+              loading="lazy"
+            />
             <div class="art-card-body">
               <div>
-                <p class="art-meta">Acryl auf Papier · 2026</p>
-                <h3>Der bunte Traum</h3>
+                <p class="art-meta">Farbe auf Leinwand · 2026</p>
+                <h3>Ohne Titel I</h3>
               </div>
-              <button class="inquiry-button" type="button" data-artwork="Der bunte Traum">Anfragen</button>
+              <button class="inquiry-button" type="button" data-artwork="Ohne Titel I">Anfragen</button>
             </div>
           </article>
 
           <article class="art-card featured-card">
-            <div class="badge">Lieblingswerk</div>
-            <div class="artwork artwork-two" role="img" aria-label="Sonniges Bild mit Blumen und grünen Hügeln">
-              <span class="mini-sun"></span>
-              <span class="mini-hill"></span>
-              <span class="mini-flower">✿</span>
-              <span class="mini-flower second">✿</span>
-            </div>
+            <div class="badge">Erstes Atelierwerk</div>
+            <img
+              class="artwork-photo"
+              src="assets/werke/IMG_20260612_190059.jpg"
+              alt="Abstraktes Gemälde von Adriana mit blauen, grünen und gelben Pinselstrichen"
+              width="1536"
+              height="1024"
+              loading="lazy"
+            />
             <div class="art-card-body">
               <div>
-                <p class="art-meta">Wasserfarbe · 2026</p>
-                <h3>Sonnenblumenwiese</h3>
+                <p class="art-meta">Farbe auf Leinwand · 2026</p>
+                <h3>Ohne Titel II</h3>
               </div>
-              <button class="inquiry-button" type="button" data-artwork="Sonnenblumenwiese">Anfragen</button>
+              <button class="inquiry-button" type="button" data-artwork="Ohne Titel II">Anfragen</button>
             </div>
           </article>
 
           <article class="art-card">
-            <div class="artwork artwork-three" role="img" aria-label="Abstraktes Bild in Violett, Koralle und Türkis">
-              <span></span><span></span><span></span>
-            </div>
+            <img
+              class="artwork-photo artwork-photo-portrait"
+              src="assets/werke/IMG_20260612_190107.jpg"
+              alt="Abstraktes Gemälde von Adriana mit roten, gelben, grünen und violetten Pinselstrichen"
+              width="1536"
+              height="1024"
+              loading="lazy"
+            />
             <div class="art-card-body">
               <div>
-                <p class="art-meta">Fingerfarben · 2026</p>
-                <h3>Regenbogenwirbel</h3>
+                <p class="art-meta">Farbe auf Leinwand · 2026</p>
+                <h3>Ohne Titel III</h3>
               </div>
-              <button class="inquiry-button" type="button" data-artwork="Regenbogenwirbel">Anfragen</button>
+              <button class="inquiry-button" type="button" data-artwork="Ohne Titel III">Anfragen</button>
             </div>
           </article>
         </div>
@@ -177,7 +190,7 @@
           </label>
           <label>
             Kunstwerk
-            <input id="artwork-field" type="text" name="artwork" placeholder="z. B. Der bunte Traum" />
+            <input id="artwork-field" type="text" name="artwork" placeholder="z. B. Ohne Titel I" />
           </label>
           <label>
             Nachricht
