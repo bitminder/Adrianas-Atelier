@@ -36,6 +36,10 @@
   align-self: start;
 }
 
+.featured-card {
+  order: -1;
+}
+
 @media (max-width: 620px) {
   .real-art-frame {
     width: min(100%, 390px);
