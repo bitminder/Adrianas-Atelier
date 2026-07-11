@@ -1,5 +1,6 @@
 name: Deploy GitHub Pages
 
+# Public repository redeploy trigger: 2026-07-11
 on:
   push:
     branches:
