@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Adrianas Atelier – eine liebevoll kuratierte Sammlung kleiner Kunstwerke." />
+  <title>Adrianas Atelier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#start" aria-label="Adrianas Atelier – Startseite">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span>
+          <strong>Adrianas Atelier</strong>
+          <small>Kleine Hände. Große Kunst.</small>
+        </span>
+      </a>
+
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Menü öffnen</span>
+      </button>
+
+      <nav id="main-nav" class="main-nav" aria-label="Hauptnavigation">
+        <a href="#werke">Kunstwerke</a>
+        <a href="#ueber">Über Adriana</a>
+        <a href="#kontakt">Kontakt</a>
+        <a class="button button-small" href="#werke">Galerie entdecken</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="start" class="hero">
+      <div class="paint-stroke paint-stroke-one" aria-hidden="true"></div>
+      <div class="paint-stroke paint-stroke-two" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Willkommen in</p>
+          <h1>Adrianas <em>Atelier</em></h1>
+          <p class="hero-lead">Hier sammeln wir kleine Meisterwerke, große Fantasie und die Geschichten hinter jedem Bild.</p>
+          <div class="hero-actions">
+            <a class="button" href="#werke">Kunstwerke ansehen</a>
+            <a class="text-link" href="#ueber">Ihre Geschichte <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="hero-note">
+            <span aria-hidden="true">♡</span>
+            Jedes Bild ist ein handgemachtes Unikat.
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Dekorative Vorschau eines farbenfrohen Gemäldes">
+          <div class="art-frame">
+            <div class="artwork artwork-hero">
+              <span class="sun"></span>
+              <span class="hill hill-one"></span>
+              <span class="hill hill-two"></span>
+              <span class="flower flower-one">✿</span>
+              <span class="flower flower-two">✿</span>
+              <span class="flower flower-three">✿</span>
+            </div>
+          </div>
+          <div class="floating-label">Original von Adriana ✦</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="werke" class="section gallery-section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Aus der Galerie</p>
+            <h2>Neueste Kunstwerke</h2>
+          </div>
+          <p>Eine wachsende Sammlung voller Farbe, Ideen und kleiner Überraschungen.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="art-card">
+            <div class="artwork artwork-one" role="img" aria-label="Abstraktes Bild in Rosa, Blau und Gelb">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="art-card-body">
+              <div>
+                <p class="art-meta">Acryl auf Papier · 2026</p>
+                <h3>Der bunte Traum</h3>
+              </div>
+              <button class="inquiry-button" type="button" data-artwork="Der bunte Traum">Anfragen</button>
+            </div>
+          </article>
+
+          <article class="art-card featured-card">
+            <div class="badge">Lieblingswerk</div>
+            <div class="artwork artwork-two" role="img" aria-label="Sonniges Bild mit Blumen und grünen Hügeln">
+              <span class="mini-sun"></span>
+              <span class="mini-hill"></span>
+              <span class="mini-flower">✿</span>
+              <span class="mini-flower second">✿</span>
+            </div>
+            <div class="art-card-body">
+              <div>
+                <p class="art-meta">Wasserfarbe · 2026</p>
+                <h3>Sonnenblumenwiese</h3>
+              </div>
+              <button class="inquiry-button" type="button" data-artwork="Sonnenblumenwiese">Anfragen</button>
+            </div>
+          </article>
+
+          <article class="art-card">
+            <div class="artwork artwork-three" role="img" aria-label="Abstraktes Bild in Violett, Koralle und Türkis">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="art-card-body">
+              <div>
+                <p class="art-meta">Fingerfarben · 2026</p>
+                <h3>Regenbogenwirbel</h3>
+              </div>
+              <button class="inquiry-button" type="button" data-artwork="Regenbogenwirbel">Anfragen</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="center-action">
+          <button class="button button-outline" type="button" id="show-more">Mehr Werke anzeigen</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="ueber" class="section about-section">
+      <div class="container about-grid">
+        <div class="about-collage" aria-hidden="true">
+          <div class="paper paper-one"></div>
+          <div class="paper paper-two"></div>
+          <div class="paper paper-three">A</div>
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow">Die Künstlerin</p>
+          <h2>Fantasie kennt kein richtig oder falsch.</h2>
+          <p>Adriana malt, was sie sieht, fühlt und erfindet. Dieses digitale Atelier bewahrt ihre Entwicklung und macht jedes Werk zu einer kleinen Erinnerung.</p>
+          <p>Die Sammlung wird laufend ergänzt. Ausgewählte Originale können auf Anfrage erworben werden.</p>
+          <a class="text-link" href="#kontakt">Mehr erfahren <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="values-section" aria-label="Unsere Werte">
+      <div class="container values-grid">
+        <div><span>♡</span><strong>Mit Liebe gemacht</strong><small>Jedes Werk entsteht ganz frei.</small></div>
+        <div><span>✦</span><strong>Einzigartige Originale</strong><small>Kein Bild gibt es zweimal.</small></div>
+        <div><span>▧</span><strong>Sorgfältig verpackt</strong><small>Sicher für den Versand vorbereitet.</small></div>
+        <div><span>☀</span><strong>Freude, die bleibt</strong><small>Kunst mit einer echten Geschichte.</small></div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="section contact-section">
+      <div class="container contact-card">
+        <div>
+          <p class="eyebrow">Interesse an einem Werk?</p>
+          <h2>Schreib uns eine Nachricht.</h2>
+          <p>Wir melden uns mit Informationen zu Verfügbarkeit, Format, Preis und Versand.</p>
+        </div>
+        <form id="contact-form" class="contact-form">
+          <label>
+            Dein Name
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label>
+            E-Mail-Adresse
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label>
+            Kunstwerk
+            <input id="artwork-field" type="text" name="artwork" placeholder="z. B. Der bunte Traum" />
+          </label>
+          <label>
+            Nachricht
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+          <button class="button" type="submit">Anfrage vorbereiten</button>
+          <p class="form-note">Die Vorlage öffnet dein E-Mail-Programm. Es werden keine Daten auf der Website gespeichert.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand footer-brand" href="#start">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span><strong>Adrianas Atelier</strong><small>Kleine Hände. Große Kunst.</small></span>
+      </a>
+      <p>© <span id="year"></span> Adrianas Atelier · Mit Liebe gestaltet.</p>
+      <div class="footer-links">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
