@@ -55,8 +55,13 @@ if (contactForm) {
 
   const existingNote = contactForm.querySelector('.form-note');
   if (existingNote) {
-    existingNote.textContent = 'Die Anfrage wird sicher direkt über die Website gesendet.';
+    existingNote.innerHTML = 'Die Anfrage wird sicher über Web3Forms an uns übermittelt. Das Absenden ist unverbindlich und stellt noch keine Bestellung dar.';
   }
+
+  const legalNotice = document.createElement('p');
+  legalNotice.className = 'form-note';
+  legalNotice.innerHTML = 'Mit dem Absenden werden deine Angaben zur Bearbeitung der Anfrage verarbeitet. Weitere Informationen findest du in unserer <a href="/datenschutz.html">Datenschutzerklärung</a>.';
+  contactForm.appendChild(legalNotice);
 
   const submitButton = contactForm.querySelector('button[type="submit"]');
   if (submitButton) {
@@ -76,6 +81,21 @@ if (contactForm) {
       submitButton.textContent = 'Wird gesendet …';
     }
   });
+}
+
+const footerLinks = document.querySelector('.footer-links');
+if (footerLinks) {
+  const ensureFooterLink = (href, label) => {
+    if (!footerLinks.querySelector(`a[href="${href}"]`)) {
+      const link = document.createElement('a');
+      link.href = href;
+      link.textContent = label;
+      footerLinks.appendChild(link);
+    }
+  };
+
+  ensureFooterLink('/impressum.html', 'Impressum');
+  ensureFooterLink('/datenschutz.html', 'Datenschutz');
 }
 
 document.querySelector('#show-more')?.addEventListener('click', (event) => {
