@@ -26,89 +26,54 @@ document.querySelectorAll('.inquiry-button').forEach((button) => {
 const contactForm = document.querySelector('#contact-form');
 
 if (contactForm) {
-  const submitButton = contactForm.querySelector('button[type="submit"]');
-  const existingNote = contactForm.querySelector('.form-note');
+  contactForm.action = 'https://api.web3forms.com/submit';
+  contactForm.method = 'POST';
 
+  const addHiddenField = (name, value) => {
+    let input = contactForm.querySelector(`input[name="${name}"]`);
+    if (!input) {
+      input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      contactForm.appendChild(input);
+    }
+    input.value = value;
+  };
+
+  addHiddenField('access_key', '3c793518-60f0-4b4f-a3ea-0d1d9c12decb');
+  addHiddenField('subject', 'Neue Anfrage über Adrianas Atelier');
+  addHiddenField('from_name', 'Adrianas Atelier Website');
+  addHiddenField('redirect', 'https://adrianas-atelier.com/danke.html');
+
+  const botcheck = document.createElement('input');
+  botcheck.type = 'checkbox';
+  botcheck.name = 'botcheck';
+  botcheck.className = 'sr-only';
+  botcheck.tabIndex = -1;
+  botcheck.autocomplete = 'off';
+  contactForm.appendChild(botcheck);
+
+  const existingNote = contactForm.querySelector('.form-note');
   if (existingNote) {
     existingNote.textContent = 'Die Anfrage wird sicher direkt über die Website gesendet.';
   }
 
-  const statusMessage = document.createElement('div');
-  statusMessage.className = 'form-status';
-  statusMessage.setAttribute('role', 'status');
-  statusMessage.setAttribute('aria-live', 'polite');
-  statusMessage.hidden = true;
-  contactForm.appendChild(statusMessage);
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  if (submitButton) {
+    submitButton.textContent = 'Anfrage senden';
+  }
 
-  const setStatus = (type, title, text) => {
-    statusMessage.className = `form-status form-status--${type}`;
-    statusMessage.innerHTML = `<span class="form-status__icon" aria-hidden="true">${type === 'success' ? '✓' : '!'}</span><span><strong>${title}</strong><small>${text}</small></span>`;
-    statusMessage.hidden = false;
-    statusMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  };
+  contactForm.addEventListener('submit', () => {
+    const email = contactForm.querySelector('input[name="email"]');
+    if (email?.value) addHiddenField('replyto', email.value.trim());
 
-  contactForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    if (!contactForm.reportValidity()) return;
-
-    const originalButtonText = submitButton?.textContent || 'Anfrage senden';
-    const formData = new FormData(contactForm);
-    const artwork = String(formData.get('artwork') || '').trim();
-
-    const payload = {
-      access_key: '3c793518-60f0-4b4f-a3ea-0d1d9c12decb',
-      name: String(formData.get('name') || '').trim(),
-      email: String(formData.get('email') || '').trim(),
-      artwork: artwork || 'Allgemeine Anfrage',
-      message: String(formData.get('message') || '').trim(),
-      subject: artwork ? `Neue Anfrage zu „${artwork}“` : 'Neue Anfrage über Adrianas Atelier',
-      from_name: 'Adrianas Atelier Website',
-      botcheck: ''
-    };
-
-    statusMessage.hidden = true;
+    const artwork = contactForm.querySelector('input[name="artwork"]');
+    const artworkName = artwork?.value.trim();
+    addHiddenField('subject', artworkName ? `Neue Anfrage zu „${artworkName}“` : 'Neue Anfrage über Adrianas Atelier');
 
     if (submitButton) {
       submitButton.disabled = true;
       submitButton.textContent = 'Wird gesendet …';
-    }
-
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
-
-      const result = await response.json().catch(() => ({}));
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || `Versandfehler (${response.status})`);
-      }
-
-      contactForm.reset();
-      setStatus(
-        'success',
-        'Anfrage erfolgreich gesendet',
-        'Vielen Dank! Wir haben deine Nachricht erhalten und melden uns so bald wie möglich.'
-      );
-    } catch (error) {
-      console.error('Kontaktformular:', error);
-      const serviceMessage = error instanceof Error ? error.message : 'Unbekannter Fehler';
-      setStatus(
-        'error',
-        'Das Senden hat nicht funktioniert',
-        `${serviceMessage}. Bitte versuche es erneut oder schreibe direkt an atelierbyadriana@gmail.com.`
-      );
-    } finally {
-      if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.textContent = originalButtonText;
-      }
     }
   });
 }
