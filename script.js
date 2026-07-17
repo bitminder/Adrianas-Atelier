@@ -56,11 +56,16 @@ if (contactForm) {
     const formData = new FormData(contactForm);
     const artwork = String(formData.get('artwork') || '').trim();
 
-    formData.append('access_key', '3c793518-60f0-4b4f-a3ea-0d1d9c12decb');
-    formData.append('subject', artwork ? `Neue Anfrage zu „${artwork}“` : 'Neue Anfrage über Adrianas Atelier');
-    formData.append('from_name', 'Adrianas Atelier Website');
-    formData.append('replyto', String(formData.get('email') || '').trim());
-    formData.append('botcheck', '');
+    const payload = {
+      access_key: '3c793518-60f0-4b4f-a3ea-0d1d9c12decb',
+      name: String(formData.get('name') || '').trim(),
+      email: String(formData.get('email') || '').trim(),
+      artwork: artwork || 'Allgemeine Anfrage',
+      message: String(formData.get('message') || '').trim(),
+      subject: artwork ? `Neue Anfrage zu „${artwork}“` : 'Neue Anfrage über Adrianas Atelier',
+      from_name: 'Adrianas Atelier Website',
+      botcheck: ''
+    };
 
     statusMessage.hidden = true;
 
@@ -72,13 +77,17 @@ if (contactForm) {
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
       });
 
-      const result = await response.json();
+      const result = await response.json().catch(() => ({}));
 
       if (!response.ok || !result.success) {
-        throw new Error(result.message || 'Der Versanddienst hat die Anfrage nicht angenommen.');
+        throw new Error(result.message || `Versandfehler (${response.status})`);
       }
 
       contactForm.reset();
@@ -89,10 +98,11 @@ if (contactForm) {
       );
     } catch (error) {
       console.error('Kontaktformular:', error);
+      const serviceMessage = error instanceof Error ? error.message : 'Unbekannter Fehler';
       setStatus(
         'error',
         'Das Senden hat nicht funktioniert',
-        'Bitte versuche es erneut oder schreibe direkt an atelierbyadriana@gmail.com.'
+        `${serviceMessage}. Bitte versuche es erneut oder schreibe direkt an atelierbyadriana@gmail.com.`
       );
     } finally {
       if (submitButton) {
