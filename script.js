@@ -31,7 +31,7 @@ contactForm?.addEventListener('submit', (event) => {
   const body = encodeURIComponent(
     `Name: ${data.get('name')}\nE-Mail: ${data.get('email')}\nKunstwerk: ${data.get('artwork') || '-'}\n\n${data.get('message')}`
   );
-  window.location.href = `mailto:atelier@example.com?subject=${subject}&body=${body}`;
+  window.location.href = `mailto:atelierbyadriana@gmail.com?subject=${subject}&body=${body}`;
 });
 
 document.querySelector('#show-more')?.addEventListener('click', (event) => {
